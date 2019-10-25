@@ -30,4 +30,4 @@ logs/
 .vscode/
 
 ### application.properties ###
-application.properties
+.properties
