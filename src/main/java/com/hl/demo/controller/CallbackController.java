@@ -25,6 +25,7 @@ public class CallbackController {
     private String redirect_url;
     @GetMapping("/callback")
 
+
     public String callback(@RequestParam(name = "code") String code,
                            @RequestParam(name = "state") String state,
                            Model model){
