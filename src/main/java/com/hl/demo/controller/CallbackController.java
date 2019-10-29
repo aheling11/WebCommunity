@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class CallbackController {
 
@@ -28,7 +30,8 @@ public class CallbackController {
 
     public String callback(@RequestParam(name = "code") String code,
                            @RequestParam(name = "state") String state,
-                           Model model){
+                           HttpServletRequest request
+                           ){
 
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
 
@@ -40,10 +43,16 @@ public class CallbackController {
 
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser user = githubProvider.getUser(accessToken);
-        System.out.println(user.getName());
 
-        model.addAttribute("name", user.getName());
+        if (user != null) {
+            // write in session
+            request.getSession().setAttribute("user", user);
+            return "redirect:/";
 
-        return "index";
+        } else {
+            // login failure, relogin
+            return "redirect:index";
+        }
+
     }
 }

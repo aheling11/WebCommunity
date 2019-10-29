@@ -19,4 +19,12 @@ public class GithubUser {
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "GithubUser{" +
+                "name='" + name + '\'' +
+                ", id='" + id + '\'' +
+                '}';
+    }
 }
