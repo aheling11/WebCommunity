@@ -1,5 +1,6 @@
 package com.hl.demo.dto;
 
+
 public class GithubUser {
     private String name;
     private String id;
@@ -20,11 +21,13 @@ public class GithubUser {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "GithubUser{" +
-                "name='" + name + '\'' +
-                ", id='" + id + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "GithubUser{" +
+//                "name='" + name + '\'' +
+//                ", id='" + id + '\'' +
+//                '}';
+//    }
 }
+
+
